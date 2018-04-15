@@ -9,7 +9,6 @@ bl_info = {
 import bpy
 
 selection = None
-only_selected = True
 toggle_mode = True
  
 class allObjectsEdgesWire(bpy.types.Operator):
@@ -20,14 +19,17 @@ class allObjectsEdgesWire(bpy.types.Operator):
     
     def execute(self, context):
         global toggle_mode
-        
+     
+        if context == None:
+        	return {"CANCELLED"}
+
         toggle = toggle_mode
-        
-        objects = context.scene.objects 
-        if only_selected:
-            objects = selection
-        
-        toggle = not context.active_object.show_wire
+        objects = context.selected_objects
+
+        if len(objects) == 0:
+        	return {"FINISHED"} 
+
+        toggle = not objects[0].show_wire
         
         #for obj in objects:
         #    toggle |= not obj.show_wire
@@ -48,9 +50,9 @@ def set_wire_state(state):
 
 
 def scene_update_handler(scene):
-    global selection, toggle_mode, only_selected
+    global selection, toggle_mode
     
-    if not toggle_mode or not only_selected:
+    if not toggle_mode:
         return 
     
     if selection == None:
