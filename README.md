@@ -15,3 +15,10 @@ Wireframe On Selected
 As this addons sets the wire settings for all objects its quite intrusive, and sometimes its desired to disable or force wire drawing on certain objects. This can be achieved by the "Override Wire Drawing" flag in object's display settings.
 
 ![override](https://github.com/BenjaminSauder/Wireframe-on-shaded/blob/master/img/override.png)
+
+
+# Installation
+
+- download wireframe_on_shaded.py from the repo
+- install via user preferences > install addon from file...
+- addon should be listed under 3D View > Wireframe on shaded
