@@ -7,6 +7,7 @@ bl_info = {
     }
  
 import bpy
+from bpy.app.handlers import persistent
 
 selection = None
 toggle_mode = True
@@ -49,6 +50,7 @@ def set_wire_state(state):
         obj.show_all_edges = state
 
 
+@persistent
 def scene_update_handler(scene):
     global selection, toggle_mode
     
